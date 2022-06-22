@@ -1,10 +1,17 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { hot } from 'react-hot-loader/root'
-import { renderRoutes } from 'react-router-config'
-import { routes } from 'pages/routes'
+import { BrowserRouter as Router, Routes } from 'react-router-dom'
+import Routing from 'pages/Router'
 
 const Application: FC = () => {
-  return renderRoutes(routes)
+  return (
+    <React.StrictMode>
+      <Router>
+        <Routes>
+          <Routing />
+        </Routes>
+      </Router>
+    </React.StrictMode>
+  )
 }
-
 export default hot(Application)
