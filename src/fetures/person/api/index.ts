@@ -1,5 +1,15 @@
 import { request } from 'services/request'
-import { GetPersonParams, GetPersonResponse } from '../dto'
+import {
+  GetAllPersonsResponse,
+  GetPersonParams,
+  GetPersonResponse,
+} from '../dto'
+
+export const getAllPersonRequest = async (): Promise<GetAllPersonsResponse> =>
+  await request({
+    url: `people`,
+    method: 'GET',
+  })
 
 export const getPersonRequest = ({
   id,

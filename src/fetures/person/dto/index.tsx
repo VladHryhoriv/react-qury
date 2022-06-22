@@ -8,4 +8,11 @@ type PersonParams = {
   films: Array<string>
 }
 
-export type GetPersonParams = { id: string; params?: GetPersonParams }
+export type GetPersonParams = { id: string; params?: PersonParams }
+
+export type GetAllPersonsResponse = {
+  count: number
+  next: string
+  previous: string
+  results: Array<IPerson>
+} & SuccessResponse

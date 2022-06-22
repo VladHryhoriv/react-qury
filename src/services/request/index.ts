@@ -4,6 +4,7 @@ type TMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
 const getApi = (): string | undefined => process.env.REACT_APP_API_URL
 
+// eslint-disable-next-line
 interface RequestConfig<Data = any> {
   url: string
   headers?: { [key: string]: string }
@@ -81,14 +82,10 @@ const createAuthorization = (
  * ```
  **/
 
-export const request = <
-  RequestData = unknown,
-  ResponseData = unknown,
-  Error = unknown
->(
+export const request = <RequestData = unknown, ResponseData = unknown>(
   request: RequestConfig<RequestData>,
   token?: string
-): Promise<ResponseData | Error> => {
+): Promise<ResponseData> => {
   const url =
     request.url[0] === '/'
       ? request.url.slice(1, request.url.length)
@@ -107,6 +104,7 @@ export const request = <
 
   const formattedUrl = `${baseUrl}/${url}`
 
+  // eslint-disable-next-line
   const headers: any = {
     ...createContentType(request),
     ...createAuthorization(token),
@@ -127,9 +125,9 @@ export const request = <
     ...request.config,
   }
 
-  const response = axios(requestConfig)
-    .then((response: AxiosResponse<ResponseData>) => response.data)
-    .catch((error: Error) => error)
+  const response = axios(requestConfig).then(
+    (response: AxiosResponse<ResponseData>) => response.data
+  )
 
   return response
 }

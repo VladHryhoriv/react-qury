@@ -1,16 +1,21 @@
 import React, { FC } from 'react'
 import { hot } from 'react-hot-loader/root'
-import { BrowserRouter as Router, Routes } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Routing from 'pages/Router'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 5 * 1000 } },
+})
 
 const Application: FC = () => {
   return (
     <React.StrictMode>
-      <Router>
-        <Routes>
+      <QueryClientProvider client={queryClient}>
+        <Router>
           <Routing />
-        </Routes>
-      </Router>
+        </Router>
+      </QueryClientProvider>
     </React.StrictMode>
   )
 }

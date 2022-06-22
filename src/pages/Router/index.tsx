@@ -1,17 +1,11 @@
-import { ErrorPage } from 'pages/Error'
 import { Home } from 'pages/Home'
 import { paths } from 'pages/paths'
-import { useRoutes } from 'react-router'
+import { Route, Routes } from 'react-router'
 
 export default function Router() {
-  const routes = useRoutes([
-    {
-      path: paths.home(),
-      element: <Home />,
-    },
-    {
-      element: <ErrorPage />,
-    },
-  ])
-  return routes
+  return (
+    <Routes>
+      <Route path={paths.home()} element={<Home />} />
+    </Routes>
+  )
 }
