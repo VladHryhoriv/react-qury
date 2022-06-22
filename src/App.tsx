@@ -1,7 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
+import { hot } from 'react-hot-loader/root'
+import { renderRoutes } from 'react-router-config'
+import { routes } from 'pages/routes'
 
-function App() {
-  return <div>Star wars</div>
+const Application: FC = () => {
+  return renderRoutes(routes)
 }
 
-export default App
+export default hot(Application)
