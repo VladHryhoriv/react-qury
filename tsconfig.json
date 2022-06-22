@@ -31,6 +31,8 @@
       "components/*": ["components/*"],
       "layout/*": ["layout/*"],
       "pages/*": ["pages/*"],
+      "features/*": ["features/*"],
+      "services/*": ["services/*"],
     }
   },
   "include": [

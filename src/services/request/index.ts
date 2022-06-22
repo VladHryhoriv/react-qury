@@ -81,10 +81,14 @@ const createAuthorization = (
  * ```
  **/
 
-export const request = <RequestData = unknown, ResponseData = unknown>(
+export const request = <
+  RequestData = unknown,
+  ResponseData = unknown,
+  Error = unknown
+>(
   request: RequestConfig<RequestData>,
   token?: string
-): Promise<ResponseData> => {
+): Promise<ResponseData | Error> => {
   const url =
     request.url[0] === '/'
       ? request.url.slice(1, request.url.length)
@@ -123,9 +127,9 @@ export const request = <RequestData = unknown, ResponseData = unknown>(
     ...request.config,
   }
 
-  const response = axios(requestConfig).then(
-    (response: AxiosResponse<ResponseData>) => response.data
-  )
+  const response = axios(requestConfig)
+    .then((response: AxiosResponse<ResponseData>) => response.data)
+    .catch((error: Error) => error)
 
   return response
 }
