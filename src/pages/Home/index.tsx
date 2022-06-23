@@ -1,8 +1,9 @@
-import { getAllPersonRequest } from 'fetures/person/api'
-import { GetAllPersonsResponse } from 'fetures/person/dto'
 import { FC } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 import { RouteConfigComponentProps } from 'react-router-config'
+// import { getAllCountriesRequest } from 'fetures/countries/api'
+import { GetCountriesResponse } from 'fetures/countries/dto'
+import { _mockGetCountriestRequest } from '__mock__/countries/api'
 
 type ErrorData = { message: string }
 
@@ -12,10 +13,10 @@ export const Home: FC<RouteConfigComponentProps> = () => {
     isError,
     error,
     data,
-  }: UseQueryResult<GetAllPersonsResponse, ErrorData> = useQuery<
-    GetAllPersonsResponse,
+  }: UseQueryResult<GetCountriesResponse, ErrorData> = useQuery<
+    GetCountriesResponse,
     ErrorData
-  >('persons', getAllPersonRequest)
+  >('persons', _mockGetCountriestRequest)
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -27,8 +28,11 @@ export const Home: FC<RouteConfigComponentProps> = () => {
 
   return (
     <div>
-      {data?.results.map((item) => (
-        <div key={item.url}>{item.name}</div>
+      {data?.response.map((item) => (
+        <div key={item.name}>
+          <img alt={item.name} src={item.flag} />
+          {item.name}
+        </div>
       ))}
     </div>
   )

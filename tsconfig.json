@@ -33,6 +33,7 @@
       "pages/*": ["pages/*"],
       "features/*": ["features/*"],
       "services/*": ["services/*"],
+      "__mock__/*": ["__mock__/*"],
     }
   },
   "include": [
