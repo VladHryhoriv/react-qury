@@ -15,9 +15,7 @@ export const Home: FC<RouteConfigComponentProps> = () => {
   }: UseQueryResult<GetAllPersonsResponse, ErrorData> = useQuery<
     GetAllPersonsResponse,
     ErrorData
-  >('persons', getAllPersonRequest, {
-    select: (data) => data,
-  })
+  >('persons', getAllPersonRequest)
 
   if (isLoading) {
     return <div>Loading ...</div>

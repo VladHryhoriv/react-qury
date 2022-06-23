@@ -5,8 +5,8 @@ import {
   GetPersonResponse,
 } from '../dto'
 
-export const getAllPersonRequest = async (): Promise<GetAllPersonsResponse> =>
-  await request({
+export const getAllPersonRequest = (): Promise<GetAllPersonsResponse> =>
+  request({
     url: `people`,
     method: 'GET',
   })
