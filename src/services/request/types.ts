@@ -1,11 +1,11 @@
+export interface ResponseMeta {
+  total_pages: number
+  current_page: number
+  next_page: number
+  per_page: number
+  total_count: number
+}
 export interface SuccessResponse<Response> {
-  results: number
-  errors: {
-    requaired?: string
-  }
-  paging: {
-    current: number
-    total: number
-  }
-  response: Response
+  data: Response
+  meta: ResponseMeta
 }

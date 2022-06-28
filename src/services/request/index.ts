@@ -3,7 +3,6 @@ import axios, { AxiosRequestConfig, AxiosResponse, CancelToken } from 'axios'
 type TMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
 const getApi = (): string | undefined => process.env.REACT_APP_API_URL
-const getApiKey = (): string | undefined => process.env.REACT_APP_API_SPORTS_KEY
 
 // eslint-disable-next-line
 interface RequestConfig<Data = any> {
@@ -47,14 +46,6 @@ const contentTypeFromOptions = (options: RequestConfig) => {
   return typeof options.body === 'object'
     ? 'application/json'
     : (options.headers && options.headers['Content-Type']) || ''
-}
-
-const apiAccess = (): Record<string, string | undefined> => {
-  return {
-    // 'X-RapidAPI-Key': getApiRapidKey(),
-    // 'X-RapidAPI-Host': getApiRapidHost(),
-    'x-apisports-key': getApiKey(),
-  }
 }
 
 const createContentType = (
@@ -106,7 +97,6 @@ export const request = <RequestData = unknown, ResponseData = unknown>(
   // eslint-disable-next-line
   const headers: any = {
     ...createContentType(request),
-    ...apiAccess(),
     ...request.headers,
     Accept: '*/*',
   }

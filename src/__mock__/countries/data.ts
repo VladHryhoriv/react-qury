@@ -1,37 +1,40 @@
-import { GetCountriesResponse } from 'fetures/countries/dto'
+import { GetTeamsResponse } from 'features/teams/dto'
 
-export const countries: GetCountriesResponse = {
-  results: 5,
-  errors: {},
-  paging: {
-    current: 1,
-    total: 5,
-  },
-  response: [
+export const teams: GetTeamsResponse = {
+  data: [
     {
-      name: 'Afghanistan',
-      code: null,
-      flag: null,
+      id: 14,
+      abbreviation: 'LAL',
+      city: 'Los Angeles',
+      conference: 'West',
+      division: 'Pacific',
+      full_name: 'Los Angeles Lakers',
+      name: 'Lakers',
     },
     {
-      name: 'Albania',
-      code: 'AL',
-      flag: 'https://media.api-sports.io/flags/al.svg',
+      id: 14,
+      abbreviation: 'LAL',
+      city: 'Los Angeles',
+      conference: 'West',
+      division: 'Pacific',
+      full_name: 'Los Angeles Lakers',
+      name: 'Lakers',
     },
     {
-      name: 'Algeria',
-      code: 'DZ',
-      flag: 'https://media.api-sports.io/flags/dz.svg',
-    },
-    {
-      name: 'American-Samoa',
-      code: null,
-      flag: null,
-    },
-    {
-      name: 'Andorra',
-      code: 'AD',
-      flag: 'https://media.api-sports.io/flags/ad.svg',
+      id: 14,
+      abbreviation: 'LAL',
+      city: 'Los Angeles',
+      conference: 'West',
+      division: 'Pacific',
+      full_name: 'Los Angeles Lakers',
+      name: 'Lakers',
     },
   ],
+  meta: {
+    total_pages: 1,
+    current_page: 1,
+    next_page: 2,
+    per_page: 25,
+    total_count: 3,
+  },
 }

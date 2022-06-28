@@ -1,0 +1,14 @@
+@import '../../assets/style/variables';
+
+.avatar {
+	border-radius: 30%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $color-gray;
+
+	&-small {
+		width: 80px;
+		height: 80px;
+	}
+}

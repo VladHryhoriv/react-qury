@@ -1,9 +1,12 @@
 import { FC } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 import { RouteConfigComponentProps } from 'react-router-config'
-// import { getAllCountriesRequest } from 'fetures/countries/api'
-import { GetCountriesResponse } from 'fetures/countries/dto'
-import { _mockGetCountriestRequest } from '__mock__/countries/api'
+import { GetTeamsResponse } from 'features/teams/dto'
+// import { _mockGetCountriestRequest } from '__mock__/countries/api' MOCK REQUEST
+import { getAllTeamsRequest } from 'features/teams/api'
+import { SideBar } from 'layout/Sidebar'
+
+import './style.scss'
 
 type ErrorData = { message: string }
 
@@ -13,10 +16,10 @@ export const Home: FC<RouteConfigComponentProps> = () => {
     isError,
     error,
     data,
-  }: UseQueryResult<GetCountriesResponse, ErrorData> = useQuery<
-    GetCountriesResponse,
+  }: UseQueryResult<GetTeamsResponse, ErrorData> = useQuery<
+    GetTeamsResponse,
     ErrorData
-  >('persons', _mockGetCountriestRequest)
+  >('teams', getAllTeamsRequest)
 
   if (isLoading) {
     return <div>Loading ...</div>
@@ -26,14 +29,13 @@ export const Home: FC<RouteConfigComponentProps> = () => {
     return <div>{error.message}</div>
   }
 
+  if (!data?.data) {
+    return <h1>No Data</h1>
+  }
+
   return (
-    <div>
-      {data?.response.map((item) => (
-        <div key={item.name}>
-          <img alt={item.name} src={item.flag} />
-          {item.name}
-        </div>
-      ))}
+    <div className="home home-wrapp">
+      <SideBar.SideBar title="Teams" data={data.data} />
     </div>
   )
 }
